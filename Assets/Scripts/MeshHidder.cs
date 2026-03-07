@@ -11,6 +11,13 @@ public class MeshHidder : MonoBehaviour
         meshes = GetComponentsInChildren<MeshRenderer>();
     }
 
+    public void Show()
+    {
+        foreach (var mesh in meshes)
+        {
+            mesh.enabled = true;
+        }
+    }
     public void Hide()
     {
         foreach (var mesh in meshes)
