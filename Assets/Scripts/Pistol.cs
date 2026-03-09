@@ -15,7 +15,11 @@ public class Pistol : Weapon
     {
         base.Shoot();
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        
     }
 
+    protected override void StopShooting(DeactivateEventArgs args)
+    {
+        base.StopShooting(args);
+    }
 }
