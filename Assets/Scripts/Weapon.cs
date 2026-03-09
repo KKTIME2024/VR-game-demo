@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -42,14 +43,32 @@ public class Weapon : MonoBehaviour
     {
         (args.interactorObject as MonoBehaviour).GetComponent<MeshHidder>().Show();
     }
-        protected virtual void StartShooting(ActivateEventArgs args)
+    protected virtual void StartShooting(ActivateEventArgs args)
     {
-        throw new System.NotImplementedException();
+        // Base implementation intentionally left empty for derived classes.
     }
         protected virtual void StopShooting(DeactivateEventArgs args)
     {
-        throw new System.NotImplementedException();
+        // Base implementation intentionally left empty for derived classes.
     }
 
+    protected virtual void Shoot()
+    {
+        ApplyRecoil();
+    }
 
+    private void ApplyRecoil()
+    {
+        newrigidbody.AddRelativeForce(Vector3.back * recoilForce, ForceMode.Impulse);
+    }
+
+    public float GetShootingForce()
+    {
+        return shootingForce;
+    }
+
+    public float GetDamage()
+    {
+        return damage;
+    }
 }
