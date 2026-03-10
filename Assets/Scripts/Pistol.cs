@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class Pistol : Weapon
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Projectile bulletPrefab;
     protected override void StartShooting(ActivateEventArgs args)
     {
         base.StartShooting(args);
@@ -14,8 +14,9 @@ public class Pistol : Weapon
     protected override void Shoot()
     {
         base.Shoot();
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        
+        Projectile bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        bullet.Init(this);
+        bullet.Launch();
     }
 
     protected override void StopShooting(DeactivateEventArgs args)

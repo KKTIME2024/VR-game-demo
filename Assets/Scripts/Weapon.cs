@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float shootingForce;
     [SerializeField] protected Transform bulletSpawn;
     [SerializeField] protected float recoilForce;
-    [Serialize] private float damage;
+    [Serialize] public float damage;
 
 
     private Rigidbody newrigidbody;
@@ -24,6 +24,7 @@ public class Weapon : MonoBehaviour
     {
         newrigidbody = GetComponent<Rigidbody>();
         grabInteractableWeapon = GetComponent<XRGrabInteractable>();
+        SetupInteractableWeaponEvent();
     }
 
     public void SetupInteractableWeaponEvent()
