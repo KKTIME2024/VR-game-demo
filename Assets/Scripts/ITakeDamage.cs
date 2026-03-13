@@ -2,17 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ITakeDamage : MonoBehaviour
+public interface ITakeDamage
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void TakeDamage(Weapon weapon, Projectile projectile, Vector3 contactPoint);
 }
